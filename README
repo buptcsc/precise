@@ -1,0 +1,15 @@
+./precise-0.11/precise-setup
+
+./precise-0.11/precise-keygen -o a_priv_key pub_key master_key 0@mail.com teacher security
+./precise-0.11/precise-keygen -o b_priv_key pub_key master_key 2@mail.com family security
+./precise-0.11/precise-keygen -o c_priv_key pub_key master_key 11@mail.com colleague security 'level = 3'
+
+./precise-0.11/precise-enc pub_key post.png 'family or (colleague and level >= 5)' 1@mail.com 2@mail.com 3@mail.com 4@mail.com 5@mail.com 6@mail.com 7@mail.com 8@mail.com 9@mail.com 10@mail.com
+
+./precise-0.11/precise-dec1 pub_key b_priv_key 2@mail.com post.png.enc
+
+./precise-0.11/precise-rekeygen pub_key b_priv_key -o b_re_key 2@mail.com 11@mail.com 12@mail.com 13@mail.com 14@mail.com 15@mail.com 16@mail.com 17@mail.com 18@mail.com 19@mail.com 20@mail.com
+
+./precise-0.11/precise-reenc pub_key b_re_key 2@mail.com post.png.enc
+
+./precise-0.11/precise-dec2 pub_key c_priv_key 11@mail.com post.png.enc.rec
